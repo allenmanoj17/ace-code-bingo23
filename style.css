@@ -1,0 +1,158 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #f8f8f8;
+  font-family: "Nunito", sans-serif;
+}
+
+
+.main-content {
+  max-width: 600px;
+  width: 100%;
+  margin: 1em auto 0;
+  overflow: hidden;
+}
+
+.title {
+  background: #000000;
+  color: #fff;
+  grid-column: span 5;
+  text-align: center;
+  font: 50px "Amatic SC";
+}
+.title span {
+  display: none;
+}
+.title span:nth-child(1) {
+  display: block;
+}
+@media screen and (max-width: 600px) {
+  .title span:nth-child(1) {
+    display: none;
+  }
+  .title span:nth-child(2) {
+    display: block;
+  }
+}
+
+.bingo-card {
+  background: #009a9d;
+  padding: 5px;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-rows: repeat(5, 110px);
+  grid-template-columns: repeat(5, 1fr);
+  text-transform: uppercase;
+}
+.bingo-card__item {
+  background: #fcfcfc;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  font-size: 35px;
+  user-select: none;
+}
+.bingo-card__item:after {
+  content: "-";
+  position: absolute;
+  top: -28%;
+  left: -30%;
+  color: #fbda7d;
+  width: 100%;
+  opacity: 0;
+  transition: 0.1s ease;
+  height: 0;
+  pointer-events: none;
+  font: 280px/0.5 "Caveat Brush", cursive;
+  text-align: center;
+  transform: rotate(-45deg);
+}
+.bingo-card__item.active:after {
+  height: 100%;
+  opacity: 0.7;
+}
+
+.bingo-card__item {
+  padding: 15px;
+}
+.bingo-card__item.active .bingo-card__checkbox:before {
+  content: "✔";
+  position: absolute;
+  color: black;
+  left: 0;
+  top: -19px;
+  color: #fdb90b;
+  font: 30px "Caveat Brush", cursive;
+}
+.bingo-card__checkbox {
+  display: none;
+}
+
+.clear-button {
+  margin: 2em 0 0;
+  font: 700 16px "Nunito", sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  border: 2px dotted;
+  color: #fdb90b;
+  padding: 8px 10px;
+}
+.clear-button:hover {
+  color: #f2ae00;
+}
+
+@media screen and (max-width: 600px) {
+  .main-content {
+    max-width: none;
+    margin: 0;
+  }
+
+  .title {
+    font: 50px/0.9 "Amatic SC", cursive;
+    padding: 20px;
+  }
+
+  .bingo-card {
+    grid-template-rows: repeat(24, auto);
+    grid-template-columns: auto;
+    margin: 1em;
+  }
+
+  .bingo-card__item {
+    justify-content: flex-start;
+    padding: 15px 15px 15px 40px;
+    text-align: left;
+  }
+  .bingo-card__item:after {
+    content: "";
+    opacity: 0;
+  }
+  .bingo-card__item:nth-child(13) {
+    display: none;
+  }
+
+  .bingo-card__checkbox {
+    display: inline;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 10px;
+    border: 2px dashed #f7d75c;
+  }
+}
+
+a:link { text-decoration: none;
+color: #000000; }
+
+
+a:hover { text-decoration: none;
+    color: #009a9d;
+}
+
